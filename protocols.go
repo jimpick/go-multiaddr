@@ -30,6 +30,8 @@ const (
 	P_P2P_WEBRTC_DIRECT = 0x0114
 	P_WS                = 0x01DD
 	P_WSS               = 0x01DE
+	P_WSDAEMON          = 0x0FDD
+	P_WSSDAEMON         = 0x0FDE
 )
 
 var (
@@ -207,6 +209,16 @@ var (
 		Code:  P_WSS,
 		VCode: CodeToVarint(P_WSS),
 	}
+	protoWSDaemon = Protocol{
+		Name:  "wsdaemon",
+		Code:  P_WSDAEMON,
+		VCode: CodeToVarint(P_WSDAEMON),
+	}
+	protoWSSDaemon = Protocol{
+		Name:  "wssdaemon",
+		Code:  P_WSSDAEMON,
+		VCode: CodeToVarint(P_WSSDAEMON),
+	}
 )
 
 func init() {
@@ -237,6 +249,8 @@ func init() {
 		protoP2P_WEBRTC_DIRECT,
 		protoWS,
 		protoWSS,
+		protoWSDaemon,
+		protoWSSDaemon,
 	} {
 		if err := AddProtocol(p); err != nil {
 			panic(err)

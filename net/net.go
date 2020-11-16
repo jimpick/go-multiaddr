@@ -91,6 +91,7 @@ func WrapNetConn(nconn net.Conn) (Conn, error) {
 		return nil, fmt.Errorf("failed to convert nconn.LocalAddr: nil")
 	}
 
+	fmt.Printf("Jim go-multiaddr/net WrapNetConn: %v\n", nconn.LocalAddr())
 	laddr, err := FromNetAddr(nconn.LocalAddr())
 	if err != nil {
 		return nil, fmt.Errorf("failed to convert nconn.LocalAddr: %s", err)
